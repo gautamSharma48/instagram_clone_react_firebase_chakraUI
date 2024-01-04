@@ -7,23 +7,23 @@ const SuggestedUsers = () => {
     {
       userName: "Gautam Sharma",
       img: "/images/img1.png",
-      followers: 1392,
+      followers: 1392
     },
     {
       userName: "Eve",
       img: "/images/img2.png",
-      followers: 1392,
+      followers: 1392
     },
     {
       userName: "john",
       img: "/images/img3.png",
-      followers: 1392,
+      followers: 1392
     },
     {
       userName: "Gauti",
       img: "/images/img4.png",
-      followers: 1392,
-    },
+      followers: 1392
+    }
   ];
   return (
     <VStack py={8} px={6} gap={4}>

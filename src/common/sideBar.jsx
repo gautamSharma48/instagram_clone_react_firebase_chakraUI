@@ -5,7 +5,7 @@ import {
   InstagramLogo,
   InstagramMobileLogo,
   NotificationsLogo,
-  SearchLogo,
+  SearchLogo
 } from "./constants";
 import { AiFillHome } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
@@ -14,24 +14,24 @@ const SideBar = () => {
     {
       icon: <AiFillHome size={25} />,
       text: "Home",
-      link: "/",
+      link: "/"
     },
     {
       icon: <SearchLogo size={25} />,
-      text: "Search",
+      text: "Search"
     },
     {
       icon: <NotificationsLogo size={25} />,
-      text: "Notifications",
+      text: "Notifications"
     },
     {
       icon: <CreatePostLogo size={25} />,
-      text: "Create",
+      text: "Create"
     },
     {
       icon: <Avatar size={"sm"} name="Gautam Sharma" src="/profilePic.png" />,
-      text: "Profile",
-    },
+      text: "Profile"
+    }
   ];
   return (
     <>
@@ -82,7 +82,7 @@ const SideBar = () => {
                   display={"flex"}
                   alignItems={"center"}
                   gap={4}
-                  _hover={{ bg: "whiteAlpha.400" }}
+                  _hover={{ bg: "whiteAlpha.400", borderRadius: 4 }}
                   p={2}
                   w={{ base: 10, md: "full" }}
                   justifyContent={{ base: "center", md: "flex-start" }}

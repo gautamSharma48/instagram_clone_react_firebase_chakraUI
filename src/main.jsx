@@ -19,14 +19,14 @@ const styles = {
   global: (props) => ({
     body: {
       bg: mode("gray-100", "#000")(props),
-      color: mode("gray.800", "white.alpha.900")(props),
-    },
-  }),
+      color: mode("gray.800", "white.alpha.900")(props)
+    }
+  })
 };
 // 2. Add your color mode config
 const config = {
   initialColorMode: "dark",
-  useSystemColorMode: false,
+  useSystemColorMode: false
 };
 
 // 3. extend the theme

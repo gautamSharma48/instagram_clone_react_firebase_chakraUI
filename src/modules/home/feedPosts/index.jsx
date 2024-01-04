@@ -3,7 +3,7 @@ import {
   Flex,
   Skeleton,
   SkeletonCircle,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import FeedPost from "./feedPost";
 import { useEffect, useState } from "react";
@@ -19,20 +19,20 @@ const FeedPosts = () => {
   const data = [
     {
       userName: "Gautam Sharma",
-      img: "/images/img1.png",
+      img: "/images/img1.png"
     },
     {
       userName: "Eve",
-      img: "/images/img2.png",
+      img: "/images/img2.png"
     },
     {
       userName: "john",
-      img: "/images/img3.png",
+      img: "/images/img3.png"
     },
     {
       userName: "Gauti",
-      img: "/images/img4.png",
-    },
+      img: "/images/img4.png"
+    }
   ];
   return (
     <Container maxW={"container.sm"} py={10} px={2}>
