@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import { AuthPage, Home } from "./modules";
+import { AuthPage, Home, Profile } from "./modules";
 import PageLayout from "./common/pageLayout";
 
 /**
@@ -13,7 +13,8 @@ const Router = () => {
       <Routes>
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/" element={<Home />} />
-        <Route path="*" element={<Navigate to={"/sign-in"} replace />} />
+        <Route path="/user/:username" element={<Profile />} />
+        <Route path="*" element={<Navigate to={"/auth"} replace />} />
       </Routes>
     </PageLayout>
   );
