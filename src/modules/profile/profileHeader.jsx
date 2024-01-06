@@ -4,7 +4,7 @@ import {
   Button,
   Flex,
   Text,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 
 const ProfileHeader = () => {
