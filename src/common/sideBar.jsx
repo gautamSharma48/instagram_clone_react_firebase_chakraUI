@@ -30,7 +30,8 @@ const SideBar = () => {
     },
     {
       icon: <Avatar size={"sm"} name="Gautam Sharma" src="/profilePic.png" />,
-      text: "Profile"
+      text: "Profile",
+      link: "/user/gautam"
     }
   ];
   return (
