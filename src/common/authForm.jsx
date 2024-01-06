@@ -5,7 +5,7 @@ import {
   Image,
   Input,
   Text,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { history } from "../manager/history";
@@ -15,7 +15,7 @@ const AuthForm = () => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
-    confirmPassword: "",
+    confirmPassword: ""
   });
 
   const updateState = (name, value) => {

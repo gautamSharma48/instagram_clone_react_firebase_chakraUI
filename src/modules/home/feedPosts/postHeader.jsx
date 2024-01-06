@@ -22,7 +22,7 @@ const PostHeader = ({ userData }) => {
           color={"blue.500"}
           fontWeight={"bold"}
           _hover={{
-            color: "white",
+            color: "white"
           }}
         >
           Unfollow

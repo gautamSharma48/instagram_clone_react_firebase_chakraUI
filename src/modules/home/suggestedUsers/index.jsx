@@ -7,23 +7,23 @@ const SuggestedUsers = () => {
     {
       userName: "Gautam Sharma",
       img: "/images/img1.png",
-      followers: 1392,
+      followers: 1392
     },
     {
       userName: "Eve",
       img: "/images/img2.png",
-      followers: 1392,
+      followers: 1392
     },
     {
       userName: "john",
       img: "/images/img3.png",
-      followers: 1392,
+      followers: 1392
     },
     {
       userName: "Gauti",
       img: "/images/img4.png",
-      followers: 1392,
-    },
+      followers: 1392
+    }
   ];
   return (
     <VStack py={8} px={6} gap={4}>
@@ -43,7 +43,7 @@ const SuggestedUsers = () => {
       <Box fontSize={12} color={"gray.500"} mt={5} alignSelf={"start"}>
         @ 2023 Built By{" "}
         <Link
-          href="https://www.youtube.com"
+          href="https://github.com/gautamSharma48?tab=repositories"
           target="_blank"
           color="blue.500"
           fontSize={14}

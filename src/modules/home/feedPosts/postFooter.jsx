@@ -5,13 +5,13 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import { useState } from "react";
 import {
   CommentLogo,
   NotificationsLogo,
-  UnlikeLogo,
+  UnlikeLogo
 } from "../../../common/constants";
 
 const PostFooter = ({ userData }) => {
