@@ -1,66 +1,17 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Input,
-  Text,
-  VStack
-} from "@chakra-ui/react";
+import { Box, Flex, Image, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
-import { history } from "../manager/history";
+import Login from "./login";
+import SignUp from "./signUp";
 
 const AuthForm = () => {
   const [isLogin, setLogin] = useState(true);
-  const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
-    confirmPassword: ""
-  });
 
-  const updateState = (name, value) => {
-    setInputs((prev) => ({ ...prev, [name]: value }));
-  };
-  const handleAuth = () => {
-    if (!inputs.email || !inputs.email) {
-      alert("Please fill all the fields");
-      return;
-    }
-    history.push("/");
-  };
   return (
     <>
       <Box border={"1px solid gray"} borderRadius={4} padding={5}>
         <VStack spacing={4}>
           <Image src="/images/logo.png" alt="logo" />
-          <Input
-            onChange={(event) => updateState("email", event.target.value)}
-            placeholder="Email"
-            fontSize={"14"}
-          />
-          <Input
-            onChange={(event) => updateState("password", event.target.value)}
-            placeholder="Password"
-            fontSize={"14"}
-          />
-          {!isLogin ? (
-            <Input
-              placeholder="Confirm Password"
-              fontSize={14}
-              type="password"
-              onChange={(event) =>
-                updateState("confirmPassword", event.target.value)
-              }
-            />
-          ) : null}
-          <Button
-            onClick={handleAuth}
-            w={"full"}
-            colorScheme="blue"
-            fontSize={14}
-          >
-            {isLogin ? "Log in" : "Sign Up"}{" "}
-          </Button>
+          {isLogin ? <Login /> : <SignUp />}
           {/* OR text */}
           <Flex
             alignItems={"center"}
