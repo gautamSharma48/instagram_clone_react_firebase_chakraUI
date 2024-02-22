@@ -1,7 +1,11 @@
-import { Button, Input } from "@chakra-ui/react";
+import { Alert, AlertIcon, Button, Input } from "@chakra-ui/react";
 import { useState } from "react";
+import useShowToast from "../hooks/useShowToast";
+import useLogin from "../hooks/useLogin";
 
 const Login = () => {
+  const showToast = useShowToast();
+  const { loading, error, handleLogin } = useLogin();
   const [inputs, setInputs] = useState({
     email: "",
     password: ""
@@ -11,12 +15,16 @@ const Login = () => {
     setInputs((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleAuth = () => {
-    if (!inputs.email || !inputs.email) {
-      alert("Please fill all the fields");
+  const handleAuth = async () => {
+    if (!inputs.email || !inputs.password) {
+      showToast("Error", "Please fill all the fields", "error");
       return;
     }
-    history.push("/");
+    try {
+      await handleLogin(inputs);
+    } catch (error) {
+      showToast("Error", error.message, "error");
+    }
   };
   return (
     <>
@@ -30,9 +38,22 @@ const Login = () => {
         onChange={(event) => updateState("password", event.target.value)}
         placeholder="Password"
         fontSize={"14"}
+        size={"sm"}
         value={inputs.password}
       />
-      <Button onClick={handleAuth} w={"full"} colorScheme="blue" fontSize={14}>
+      {error && (
+        <Alert status="error" fontSize={13} p={2} borderRadius={4}>
+          <AlertIcon fontSize={12} />
+          {error.message}
+        </Alert>
+      )}
+      <Button
+        isLoading={loading}
+        onClick={handleAuth}
+        w={"full"}
+        colorScheme="blue"
+        fontSize={14}
+      >
         Log in
       </Button>
     </>

@@ -13,7 +13,7 @@ const Router = () => {
       <Routes>
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/" element={<Home />} />
-        <Route path="/user/:username" element={<Profile />} />
+        <Route path="/:username" element={<Profile />} />
         <Route path="*" element={<Navigate to={"/auth"} replace />} />
       </Routes>
     </PageLayout>

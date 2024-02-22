@@ -10,10 +10,20 @@ import SideBar from "./sideBar";
  */
 const PageLayout = ({ children }) => {
   const { pathname } = useLocation();
+  // const authUser = useAuthStore((state) => state.user);
+  const canRenderSideBar = pathname !== "/auth";
+
+  // useEffect(() => {
+  //   if (pathname !== "/user/" + username) {
+  //     if (authUser) return history.push("/");
+  //     else if (!authUser) return history.push("/auth");
+  //   }
+  // }, [authUser, pathname, username]);
+
   return (
     <Flex>
       {/* sidebar on the left */}
-      {pathname !== "/auth" ? (
+      {canRenderSideBar ? (
         <Box w={{ base: "70px", md: "240px" }}>
           <SideBar />
         </Box>
