@@ -1,6 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
-import SideBar from "./sideBar";
+import SideBar from "./sidebar";
 
 /**
  * Renders the page layout component.

@@ -1,5 +1,5 @@
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import FireBase from "../services/firebase";
+import FireBase from "../../services/firebase";
 import {
   collection,
   doc,
@@ -8,8 +8,8 @@ import {
   setDoc,
   where
 } from "firebase/firestore";
-import useShowToast from "./useShowToast";
-import useAuthStore from "../store/authStore";
+import useShowToast from "../useShowToast";
+import useAuthStore from "../../store/authStore";
 
 const useSignUpWithEmailAndPassword = () => {
   const firebase = new FireBase();

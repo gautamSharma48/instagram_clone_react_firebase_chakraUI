@@ -1,7 +1,7 @@
 import { Alert, AlertIcon, Button, Input } from "@chakra-ui/react";
 import { useState } from "react";
 import useShowToast from "../hooks/useShowToast";
-import useLogin from "../hooks/useLogin";
+import useLogin from "../hooks/login/useLogin";
 
 const Login = () => {
   const showToast = useShowToast();

@@ -11,7 +11,7 @@ import ProfileHeader from "./profileHeader";
 import ProfileTabs from "./profileTabs";
 import ProfilePost from "./profilePosts";
 import { useParams } from "react-router-dom";
-import useGetUserProfileByUserName from "../../hooks/useGetUserProfileByUserName";
+import useGetUserProfileByUserName from "../../hooks/profilePage/useGetUserProfileByUserName";
 import { Link as RouterLink } from "react-router-dom";
 
 const Profile = () => {

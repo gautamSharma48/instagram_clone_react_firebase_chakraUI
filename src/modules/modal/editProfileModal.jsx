@@ -6,11 +6,7 @@ import {
   Heading,
   Input,
   Stack,
-  useColorModeValue,
-  HStack,
   Avatar,
-  AvatarBadge,
-  IconButton,
   Center,
   Modal,
   ModalOverlay,
@@ -19,22 +15,34 @@ import {
   ModalCloseButton,
   ModalBody
 } from "@chakra-ui/react";
-import { SmallCloseIcon } from "@chakra-ui/icons";
 import { useRef, useState } from "react";
 import useAuthStore from "../../store/authStore";
+import usePreviewImg from "../../hooks/profilePage/usePreviewImg";
+import useEditProfile from "../../hooks/profilePage/useEditProfile";
+import useShowToast from "../../hooks/useShowToast";
 
 const EditProfileModal = ({ isOpen, onClose }) => {
-  const fileRef = useRef(null);
-  const authUser = useAuthStore((state) => state.user);
   const [inputs, setInputs] = useState({
     username: "",
     fullName: "",
     bio: ""
   });
+  const showToast = useShowToast();
+  const fileRef = useRef(null);
+  const authUser = useAuthStore((state) => state.user);
+  const { selectedFile, handleImageChange, setSelectedFile } = usePreviewImg();
+  const { editProfile, isUpdating } = useEditProfile();
 
-  const handleImageChange = () => {};
-
-  const handleEditProfile = () => {};
+  const handleEditProfile = async () => {
+    try {
+      inputs.selectedFile = selectedFile;
+      await editProfile(inputs);
+      setSelectedFile(null);
+      onClose();
+    } catch (error) {
+      showToast("Error", error.message, "error");
+    }
+  };
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -66,7 +74,7 @@ const EditProfileModal = ({ isOpen, onClose }) => {
                     <Center>
                       <Avatar
                         size="xl"
-                        src={authUser.profilePictureURL}
+                        src={selectedFile || authUser.profilePictureURL}
                         border={"2px solid white "}
                       />
                     </Center>
@@ -141,7 +149,7 @@ const EditProfileModal = ({ isOpen, onClose }) => {
                     w="full"
                     _hover={{ bg: "blue.500" }}
                     onClick={handleEditProfile}
-                    // isLoading={isUpdating}
+                    isLoading={isUpdating}
                   >
                     Submit
                   </Button>

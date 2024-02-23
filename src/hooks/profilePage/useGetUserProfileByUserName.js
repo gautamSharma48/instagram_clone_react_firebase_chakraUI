@@ -1,8 +1,8 @@
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import FireBase from "../services/firebase";
+import FireBase from "../../services/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import useUserProfileStore from "../store/userProfileStore";
+import useUserProfileStore from "../../store/userProfileStore";
 
 const useGetUserProfileByUserName = (username) => {
   const firebase = new FireBase();
@@ -13,6 +13,7 @@ const useGetUserProfileByUserName = (username) => {
   useEffect(() => {
     const getUserProfile = async () => {
       setLoading(true);
+
       try {
         const q = query(
           collection(firebase.fireStore, "users"),
