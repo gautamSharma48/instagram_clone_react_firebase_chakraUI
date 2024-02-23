@@ -7,9 +7,10 @@ import { history } from "../../manager/history";
 
 const Home = () => {
   const authUser = useAuthStore((state) => state.user);
+
   useEffect(() => {
     if (!authUser) return history.push("/auth");
-  }, []);
+  }, [authUser]);
   return (
     <Container maxW={"container.lg"}>
       <Flex gap={20}>
