@@ -34,7 +34,13 @@ const SuggestedUsers = () => {
       {suggestedUser.map((user, index) => (
         <Users key={index} user={user} />
       ))}
-      <Box fontSize={12} color={"gray.500"} mt={5} alignSelf={"start"}>
+      <Box
+        display={{ base: "none", md: "flex" }}
+        fontSize={12}
+        color={"gray.500"}
+        mt={5}
+        alignSelf={"start"}
+      >
         @ {new Date().getFullYear()} Built By{" "}
         <Link
           href="https://github.com/gautamSharma48?tab=repositories"

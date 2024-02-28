@@ -13,16 +13,11 @@ const Home = () => {
   }, [authUser]);
   return (
     <Container maxW={"container.lg"}>
-      <Flex gap={20}>
+      <Flex direction={{ base: "column-reverse", md: "row" }} gap={20}>
         <Box flex={2} py={10}>
           <FeedPosts />
         </Box>
-        <Box
-          flex={3}
-          mr={2}
-          maxW={"300px"}
-          display={{ base: "none", lg: "block" }}
-        >
+        <Box flex={3} mr={2} maxW={{ base: "", md: "300px" }}>
           <SuggestedUsers />
         </Box>
       </Flex>

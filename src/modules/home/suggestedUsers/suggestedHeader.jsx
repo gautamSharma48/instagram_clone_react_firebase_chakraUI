@@ -7,7 +7,12 @@ const SuggestedHeader = () => {
   const authUser = useAuthStore((state) => state.user);
 
   return (
-    <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"}>
+    <Flex
+      display={{ base: "none", md: "flex" }}
+      justifyContent={"space-between"}
+      alignItems={"center"}
+      w={"full"}
+    >
       <Flex alignItems={"center"} gap={2}>
         <Link to={`${authUser?.username}`}>
           <Avatar size={"lg"} src={authUser?.profilePictureURL} />
