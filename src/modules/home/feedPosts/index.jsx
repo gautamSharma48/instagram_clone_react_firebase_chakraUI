@@ -3,41 +3,19 @@ import {
   Flex,
   Skeleton,
   SkeletonCircle,
+  Text,
   VStack
 } from "@chakra-ui/react";
 import FeedPost from "./feedPost";
-import { useEffect, useState } from "react";
+import useGetFeedPosts from "../../../hooks/post/useGetFeedPosts";
 
 const FeedPosts = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const { isLoading, posts } = useGetFeedPosts();
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
-  const data = [
-    {
-      userName: "Gautam Sharma",
-      img: "/images/img1.png"
-    },
-    {
-      userName: "Eve",
-      img: "/images/img2.png"
-    },
-    {
-      userName: "john",
-      img: "/images/img3.png"
-    },
-    {
-      userName: "Gauti",
-      img: "/images/img4.png"
-    }
-  ];
   return (
     <Container maxW={"container.sm"} py={10} px={2}>
       {isLoading &&
-        [...Array(data.length)].map((_, index) => (
+        [...Array(3)].map((_, index) => (
           <VStack key={index} gap={4} alignItems={"flex-start"} mb={10}>
             <Flex gap={2}>
               <SkeletonCircle size={10} />
@@ -49,12 +27,22 @@ const FeedPosts = () => {
             <Skeleton w={"full"} h={"500px"} />
           </VStack>
         ))}
-      {!isLoading && (
+      {!isLoading && posts.length > 0 && (
         <>
-          {data.map((element, index) => (
-            <FeedPost key={index} userData={element} />
+          {posts.map((post) => (
+            <FeedPost key={post.id} post={post} />
           ))}
         </>
+      )}
+      {!isLoading && posts.length === 0 && (
+        <Flex direction={"column"}>
+          <Text fontSize={"md"} color={"red.400"} textAlign={"center"}>
+            Dayuum. Looks like you don&apos;t have any friends.
+          </Text>
+          <Text color={"red.400"} textAlign={"center"}>
+            Stop coding and go make some!!
+          </Text>
+        </Flex>
       )}
     </Container>
   );

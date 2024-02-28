@@ -1,6 +1,19 @@
-import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Flex,
+  Skeleton,
+  SkeletonCircle,
+  Text
+} from "@chakra-ui/react";
+import Utility from "../../../utils/utils";
+import { Link } from "react-router-dom";
+import useFollowUser from "../../../hooks/profilePage/useFollowUser";
 
-const PostHeader = ({ userData }) => {
+const PostHeader = ({ post, creatorProfile }) => {
+  const { handleFollowUser, isFollowing, isUpdating } = useFollowUser(
+    post.createdBy
+  );
   return (
     <Flex
       my={2}
@@ -9,10 +22,29 @@ const PostHeader = ({ userData }) => {
       w={"full"}
     >
       <Flex alignItems={"center"} gap={2}>
-        <Avatar size={"sm"} src={userData?.img} alt="profile" />
         <Flex fontSize={12} fontWeight={"bold"} gap={"2"}>
-          {userData?.userName}
-          <Box color="gray.500">• 1W</Box>
+          {creatorProfile ? (
+            <Link to={`/${creatorProfile.username}`}>
+              <Avatar
+                size={"sm"}
+                src={creatorProfile?.profilePictureURL}
+                alt="profile"
+              />
+            </Link>
+          ) : (
+            <SkeletonCircle size={"10"} />
+          )}
+
+          <Flex fontSize={12} fontWeight={"bold"} gap="2">
+            {creatorProfile ? (
+              <Link to={`/${creatorProfile.username}`}>
+                {creatorProfile.username}
+              </Link>
+            ) : (
+              <Skeleton w={"100px"} h={"10px"} />
+            )}
+            <Box color="gray.500">• {Utility.timesago(post.createdAt)}</Box>
+          </Flex>
         </Flex>
       </Flex>
       <Box cursor={"pointer"}>
@@ -24,8 +56,11 @@ const PostHeader = ({ userData }) => {
           _hover={{
             color: "white"
           }}
+          onClick={handleFollowUser}
+          isLoading={isUpdating}
+          size={"xs"}
         >
-          Unfollow
+          {isFollowing ? "Unfollow" : "Follow"}
         </Text>
       </Box>
     </Flex>

@@ -1,7 +1,14 @@
-import { Box, Flex, Tooltip } from "@chakra-ui/react";
+import { Box, Flex, Tooltip, useDisclosure } from "@chakra-ui/react";
 import { CreatePostLogo } from "../constants";
+import CreatePostModal from "../../modules/modal/createPostModal";
 
+/**
+ * Function to create a post with a tooltip and conditional rendering of CreatePostModal component.
+ *
+ * @return {JSX.Element} The rendered JSX element
+ */
 const CreatePost = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Tooltip
@@ -13,6 +20,7 @@ const CreatePost = () => {
         display={{ base: "block", md: "none" }}
       >
         <Flex
+          onClick={onOpen}
           alignItems={"center"}
           gap={4}
           _hover={{ bg: "whiteAlpha.400" }}
@@ -25,6 +33,7 @@ const CreatePost = () => {
           <Box display={{ base: "none", md: "block" }}>Create</Box>
         </Flex>
       </Tooltip>
+      {isOpen && <CreatePostModal onClose={onClose} isOpen={isOpen} />}
     </>
   );
 };

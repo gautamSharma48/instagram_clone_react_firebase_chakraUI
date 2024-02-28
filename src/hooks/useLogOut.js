@@ -7,7 +7,7 @@ import { history } from "../manager/history";
 const useLogOut = () => {
   const firebase = new FireBase();
   const showToast = useShowToast();
-  const [signOut, loading, error] = useSignOut(firebase.auth);
+  const [signOut, isLoggingOut, error] = useSignOut(firebase.auth);
   const logoutUser = useAuthStore((state) => state.logOut);
 
   const handleLogOut = async () => {
@@ -20,7 +20,7 @@ const useLogOut = () => {
       showToast("Error", error.message, "error");
     }
   };
-  return { handleLogOut, loading, error };
+  return { handleLogOut, isLoggingOut, error };
 };
 
 export default useLogOut;
