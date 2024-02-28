@@ -6,7 +6,7 @@ import SidebarItems from "./sidebarItems";
 import useLogOut from "../../hooks/useLogOut";
 
 const Sidebar = () => {
-  const { handleLogout, isLoggingOut } = useLogOut();
+  const { handleLogOut, isLoggingOut } = useLogOut();
   return (
     <Box
       height={"100vh"}
@@ -56,6 +56,7 @@ const Sidebar = () => {
           display={{ base: "block", md: "none" }}
         >
           <Flex
+            onClick={handleLogOut}
             mt={"auto"}
             alignItems={"center"}
             gap={4}
@@ -67,7 +68,6 @@ const Sidebar = () => {
             <BiLogOut size={25} />
             <Button
               isLoading={isLoggingOut}
-              onClick={handleLogout}
               variant={"ghost"}
               _hover={{ bg: "transparent" }}
               display={{ base: "none", md: "block" }}

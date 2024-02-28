@@ -1,25 +1,20 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import SideBar from "./sidebar";
+import { useEffect } from "react";
+import { history } from "../manager/history";
+import useAuthStore from "../store/authStore";
 
-/**
- * Renders the page layout component.
- *
- * @param {Object} children - The children components to render.
- * @return {JSX.Element} The rendered page layout.
- */
 const PageLayout = ({ children }) => {
+  const authUser = useAuthStore((state) => state.user);
   const { pathname } = useLocation();
-  // const authUser = useAuthStore((state) => state.user);
   const canRenderSideBar = pathname !== "/auth";
 
-  // useEffect(() => {
-  //   if (pathname !== "/user/" + username) {
-  //     if (authUser) return history.push("/");
-  //     else if (!authUser) return history.push("/auth");
-  //   }
-  // }, [authUser, pathname, username]);
-
+  useEffect(() => {
+    if (authUser?.uid) {
+      return history.push("/");
+    }
+  }, [authUser?.uid]);
   return (
     <Flex>
       {/* sidebar on the left */}
