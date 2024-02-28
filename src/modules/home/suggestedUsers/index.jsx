@@ -41,14 +41,14 @@ const SuggestedUsers = () => {
         mt={5}
         alignSelf={"start"}
       >
-        @ {new Date().getFullYear()} Built By{" "}
+        @ {new Date().getFullYear()} Built By
         <Link
           href="https://github.com/gautamSharma48?tab=repositories"
           target="_blank"
           color="white"
           fontSize={14}
         >
-          Gautam Sharma
+          &nbsp;Gautam Sharma
         </Link>
       </Box>
     </VStack>

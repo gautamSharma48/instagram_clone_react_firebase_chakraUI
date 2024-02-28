@@ -24,7 +24,10 @@ const Users = ({ user, setUser }) => {
           <Avatar size={"md"} src={user?.profilePictureURL} />
         </Link>
         <VStack spacing={2}>
-          <Link to={`/${user.username}`}>
+          <Link
+            style={{ textAlign: "start", width: "100%" }}
+            to={`/${user.username}`}
+          >
             <Box fontSize={12} fontWeight={"bold"} alignSelf={"start"}>
               {user?.username}
             </Box>
