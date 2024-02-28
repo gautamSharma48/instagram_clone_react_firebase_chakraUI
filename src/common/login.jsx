@@ -1,11 +1,11 @@
-import { Alert, AlertIcon, Button, Input } from "@chakra-ui/react";
+import { Button, Input } from "@chakra-ui/react";
 import { useState } from "react";
 import useShowToast from "../hooks/useShowToast";
 import useLogin from "../hooks/login/useLogin";
 
 const Login = () => {
   const showToast = useShowToast();
-  const { loading, error, handleLogin } = useLogin();
+  const { loading, handleLogin } = useLogin();
   const [inputs, setInputs] = useState({
     email: "",
     password: ""
@@ -41,12 +41,6 @@ const Login = () => {
         size={"sm"}
         value={inputs.password}
       />
-      {error && (
-        <Alert status="error" fontSize={13} p={2} borderRadius={4}>
-          <AlertIcon fontSize={12} />
-          {error.message}
-        </Alert>
-      )}
       <Button
         isLoading={loading}
         onClick={handleAuth}
