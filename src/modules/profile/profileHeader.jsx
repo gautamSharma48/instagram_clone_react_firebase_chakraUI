@@ -25,7 +25,12 @@ const ProfileHeader = () => {
 
   return (
     <Flex gap={{ base: 4, sm: 10 }} direction={{ base: "column", sm: "row" }}>
-      <AvatarGroup size={{ base: "xl", md: "2xl" }}>
+      <AvatarGroup
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent={"center"}
+        size={{ base: "xl", md: "2xl" }}
+      >
         <Avatar src={userProfile?.profilePictureURL} alt="profile pic" />
       </AvatarGroup>
       <VStack alignItems={"start"} gap={2} mx={"auto"} flex={1}>
